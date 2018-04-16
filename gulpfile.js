@@ -5,29 +5,28 @@ var minHtml = require('gulp-htmlmin'); // 压缩html
 var scss = require('gulp-sass'); // 编译scss
 var minCss = require('gulp-clean-css'); // 压缩css
 var uglify = require('gulp-uglify') //压缩js
-var imageMin = require('gulp-imagemin'); // 压缩图片
+var imgmin = require('gulp-imagemin'); // 压缩图片
 var clean = require('gulp-clean') // 删除文件
 var sequence = require('gulp-sequence') // 执行顺序
 
 
 var options = {
-    removeComments: true, //清除HTML注释
-    collapseWhitespace: true, //压缩HTML
-    collapseBooleanAttributes: true, //省略布尔属性的值 <input checked="true"/> ==> <input />
-    removeEmptyAttributes: true, //删除所有空格作属性值 <input id="" /> ==> <input />
-    removeScriptTypeAttributes: true, //删除<script>的type="text/javascript"
-    removeStyleLinkTypeAttributes: true, //删除<style>和<link>的type="text/css"
-    minifyJS: true, //压缩页面JS
-    minifyCSS: true //压缩页面CSS
+    removeComments: true,
+    collapseWhitespace: true,
+    collapseBooleanAttributes: true,
+    removeEmptyAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    minifyJS: true,
 };
 
 
 // 编译scss 压缩css
 gulp.task('Scss', function() {
-    return gulp.src('src/css/*.scss')
+    return gulp.src('src/css/*.scss', { base: 'src' })
         .pipe(scss())
         .pipe(minCss())
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('dist'))
 });
 // 压缩css
 gulp.task('MinCss', function() {
@@ -44,7 +43,6 @@ gulp.task('minJs', function() {
 // 压缩图片
 gulp.task('Image', function() {
     return gulp.src('src/img/*.jpg', { base: 'src' })
-        .pipe(imageMin())
         .pipe(gulp.dest('dist'))
 });
 // 压缩原页面
@@ -60,9 +58,15 @@ gulp.task('clean', function() {
         .pipe(clean())
 })
 
-// 自定义执行顺序
+// 拷贝icon
+gulp.task('Icon', function() {
+        return gulp.src('src/icon/*', { base: 'src' })
+            .pipe(gulp.dest('dist'))
+
+    })
+    // 自定义执行顺序
 gulp.task('sequence', function(cb) {
-    sequence('clean', ['Scss', 'Image', 'minJs', 'MinCss', 'htmlmin', 'watch', 'httpServer'], cb)
+    sequence('clean', ['Scss', 'Image', 'minJs', 'MinCss', 'htmlmin', 'watch', 'Icon'], 'httpServer', cb)
 })
 
 
