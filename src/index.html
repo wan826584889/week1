@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>(┬＿┬)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="icon/iconfont.css">
+</head>
+
+<body>
+    <div class="head">
+        <a href="javascript:;" class="icon iconfont">&#xe6f4;</a>
+        <div class="ipt"><input type="text" placeholder="🔍给你推荐 菩提偈"></div>
+        <a href="javascript:;" class="icon iconfont">&#xe6cd;</a>
+    </div>
+    <div class="opt">
+        <ul>
+
+            <li><a href="javascript:;">音乐</a></li>
+            <li><a href="javascript:;">视频</a></li>
+            <li><a href="javascript:;">电台</a></li>
+        </ul>
+    </div>
+    <div class="swiper-container">
+        <ul class="swiper-wrapper">
+            <li class="swiper-slide"><img src="img/img1.jpg" alt=""></li>
+            <li class="swiper-slide"><img src="img/img2.jpg" alt=""></li>
+            <li class="swiper-slide"><img src="img/img3.jpg" alt=""></li>
+            <li class="swiper-slide"><img src="img/img4.jpg" alt=""></li>
+        </ul>
+        <div class="swiper-paginstion"></div>
+    </div>
+    <div class="list">
+        <ul>
+            <li>
+                <dd class="icon iconfont">&#xe640;</dd>
+                <dt>私人FM</dt>
+            </li>
+            <li>
+                <dd class="icon iconfont">&#xe775;</dd>
+                <dt>每日推荐</dt>
+            </li>
+            <li>
+                <dd class="icon iconfont">&#xe621;</dd>
+                <dt>歌单</dt>
+            </li>
+            <li>
+                <dd class="icon iconfont">&#xe614;</dd>
+                <dt>排行榜</dt>
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script src="js/swiper-3.4.2.min.js"></script>
+<script>
+    new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: 3000,
+        speed: 1000,
+        pagination: '.swiper-paginstion',
+        paginationClickable: true,
+    })
+</script>
+
+
+</html>
