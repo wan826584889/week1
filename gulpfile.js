@@ -43,7 +43,7 @@ gulp.task('minJs', function() {
 });
 // 压缩图片
 gulp.task('Image', function() {
-    return gulp.src('src/images/*.jpg', { base: 'src' })
+    return gulp.src('src/img/*.jpg', { base: 'src' })
         .pipe(imageMin())
         .pipe(gulp.dest('dist'))
 });
@@ -89,4 +89,4 @@ gulp.task('watch', function() {
 })
 
 // 默认执行
-gulp.task('default', 'sequence')
+gulp.task('default', ['sequence'])
